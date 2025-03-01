@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Isso apagará todos os dados existentes!</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar</button>
+        <a href="{% url 'tela_inicial' %}">Cancelar</a>
+    </form>
+</body>
+</html>

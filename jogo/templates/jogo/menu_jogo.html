@@ -1,0 +1,16 @@
+{% extends 'jogo/base.html' %}
+
+{% block content %}
+<div class="game-menu">
+    <h1>Escolha um Personagem</h1>
+    
+    <div class="character-grid">
+        {% for personagem in personagens %}
+        <div class="character-card">
+            <h3>{{ personagem.nome }}</h3>
+            <a href="{% url 'jogar' personagem.id %}" class="btn-play">Jogar</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

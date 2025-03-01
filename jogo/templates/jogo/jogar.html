@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Onde está {{ personagem.nome }}</title>
+    <link rel="stylesheet" href="{% static 'jogo/css/style.css' %}">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1 class="quiz-title">Onde está {{ personagem.nome }}?</h1>
+        </div>
+
+        {% if error %}
+        <div class="error-message">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="location-grid">
+                {% for localizacao in localizacoes %}
+                <label class="location-card">
+                    <input 
+                        type="radio" 
+                        name="escolha" 
+                        value="{{ localizacao.id }}" 
+                        required
+                        {% if request.POST.escolha == localizacao.id|stringformat:"i" %}checked{% endif %}
+                    >
+                    <div class="card-content">
+                        <div class="location-name">{{ localizacao.nome }}</div>
+                        <div class="location-dimension">{{ localizacao.dimensao.nome }}</div>
+                    </div>
+                </label>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="submit-btn">Confirmar Resposta</button>
+        </form>
+    </div>
+</body>
+</html>

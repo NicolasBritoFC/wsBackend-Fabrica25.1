@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Rick and Morty Game{% endblock %}</title>
+    <style>
+        .navbar {
+            background: #333;
+            padding: 1rem;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            margin-right: 1rem;
+            text-decoration: none;
+        }
+        .container {
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{% url 'tela_inicial' %}">Home</a>
+        <a href="{% url 'popular_dados' %}">Carregar Dados</a>
+        <a href="{% url 'listar_personagens' %}">Ver Personagens</a>
+        <a href="{% url 'criar_personagem' %}">Novo Personagem</a>
+    </nav>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if form.instance.id %}Editar{% else %}Criar{% endif %} Personagem</title>
+</head>
+<body>
+    <h1>{% if form.instance.id %}Editar{% else %}Criar{% endif %} Personagem</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+            <button type="submit" class="btn-save">Salvar</button>
+            {% if form.instance.id %}
+            <a href="{% url 'deletar_personagem' form.instance.id %}" class="btn-delete" 
+               onclick="return confirm('Tem certeza que deseja excluir este personagem?')">
+                Excluir
+            </a>
+            {% endif %}
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'jogo/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Database Completo</h1>
+    
+    <!-- Botão de voltar para a tela inicial -->
+    <div class="back-section" style="margin-bottom: 2rem;">
+        <a href="{% url 'tela_inicial' %}" class="btn-voltar">
+            ← Voltar à Tela Inicial
+        </a>
+    </div>
+
+    <ul class="character-list">
+        {% for p in personagens %}
+        <li class="character-item">
+            <div class="character-info">
+                <h3>{{ p.nome }}</h3>
+                <p class="location-info">
+                    Localização: {{ p.localizacao.nome }} <br>
+                    <span class="dimension-info">(Dimensão: {{ p.localizacao.dimensao.nome }})</span>
+                </p>
+            </div>
+            <div class="character-actions">
+                <a href="{% url 'editar_personagem' p.id %}" class="btn-editar">Editar</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

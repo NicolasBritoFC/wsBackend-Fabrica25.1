@@ -1,0 +1,28 @@
+{% extends 'jogo/base.html' %}
+
+{% block content %}
+<div class="welcome-section">
+    <h1>Bem-vindo ao Jogo de Localizações!</h1>
+    
+    <div class="game-actions">
+        <h2>Comece a jogar:</h2>
+        {% if personagens %}
+            <a href="{% url 'menu_jogo' %}" class="btn-play">Iniciar Jogo</a>
+        {% else %}
+            <div class="alert">
+                <p>Nenhum personagem encontrado! Carregue os dados primeiro:</p>
+                <form action="{% url 'popular_dados' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-load">Carregar Dados da API</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="database-status">
+        <h3>Status do Banco de Dados:</h3>
+        <p>Personagens cadastrados: {{ personagens.count }}</p>
+        <p>Localizações mapeadas: {{ localizacoes.count }}</p>
+    </div>
+</div>
+{% endblock %}
