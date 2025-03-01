@@ -1,6 +1,6 @@
-# 🪐 Rick and Morty - Jogo das Dimensões
+# 🪐 Rick and Morty - Jogo 
 
-Descubra em qual dimensão os personagens de Rick and Morty estão!  
+Descubra em qual Lugar os personagens de Rick and Morty estão!  
 **Tecnologias**: Django, SQLite/PostgreSQL, API Rick and Morty
 
 ---
